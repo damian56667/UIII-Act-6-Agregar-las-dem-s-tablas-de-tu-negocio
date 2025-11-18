@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Agregar Proveedor{% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Agregar Proveedor</h2>
+  <form method="POST">{% csrf_token %}
+    <div class="mb-3"><label>Nombre</label><input class="form-control" name="nombre" required></div>
+    <div class="mb-3"><label>Empresa</label><input class="form-control" name="empresa"></div>
+    <div class="mb-3"><label>Teléfono</label><input class="form-control" name="telefono"></div>
+    <div class="mb-3"><label>Email</label><input type="email" class="form-control" name="email"></div>
+    <div class="mb-3"><label>Dirección</label><input class="form-control" name="direccion"></div>
+    <div class="form-check mb-3"><input class="form-check-input" type="checkbox" id="activo" name="activo" checked><label class="form-check-label" for="activo">Activo</label></div>
+    <div class="mb-3"><label>Página Web</label><input type="url" name="pagina_web" class="form-control" placeholder="https://"></div>
+    <button class="btn btn-primary">Agregar Proveedor</button>
+    <a class="btn btn-secondary" href="{% url 'ver_proveedor' %}">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

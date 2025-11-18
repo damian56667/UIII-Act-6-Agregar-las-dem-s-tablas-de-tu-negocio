@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Actualizar Pedido</h3>
+<form method="POST" action="{% url 'actualizar_pedido_proveedor' pedido.id %}">{% csrf_token %}
+  <div class="mb-3"><label>Proveedor</label>
+    <select name="proveedor" class="form-select">
+      <option value="">-- Seleccionar proveedor --</option>
+      {% for pr in proveedores %}<option value="{{ pr.id }}" {% if pedido.proveedor and pedido.proveedor.id == pr.id %}selected{% endif %}>{{ pr.nombre }}</option>{% endfor %}
+    </select>
+  </div>
+  <div class="mb-3"><label>Producto</label>
+    <select name="producto" class="form-select">
+      <option value="">-- Seleccionar producto --</option>
+      {% for prod in productos %}<option value="{{ prod.id }}" {% if pedido.producto and pedido.producto.id == prod.id %}selected{% endif %}>{{ prod.nombre }}</option>{% endfor %}
+    </select>
+  </div>
+  <div class="mb-3"><label>Cantidad</label><input type="number" class="form-control" name="cantidad" value="{{ pedido.cantidad }}"></div>
+  <div class="mb-3"><label>Fecha de entrega</label><input type="date" class="form-control" name="fecha_entrega" value="{{ pedido.fecha_entrega|date:'Y-m-d' }}"></div>
+  <div class="mb-3"><label>Estado</label>
+    <select name="estado" class="form-select">
+      <option value="PENDIENTE" {% if pedido.estado == 'PENDIENTE' %}selected{% endif %}>Pendiente</option>
+      <option value="EN_CAMINO" {% if pedido.estado == 'EN_CAMINO' %}selected{% endif %}>En camino</option>
+      <option value="ENTREGADO" {% if pedido.estado == 'ENTREGADO' %}selected{% endif %}>Entregado</option>
+      <option value="CANCELADO" {% if pedido.estado == 'CANCELADO' %}selected{% endif %}>Cancelado</option>
+    </select>
+  </div>
+  <div class="mb-3"><label>Empleado</label>
+    <select name="empleado" class="form-select">
+      <option value="">-- Ninguno --</option>
+      {% for emp in empleados %}<option value="{{ emp.id }}" {% if pedido.empleado and pedido.empleado.id == emp.id %}selected{% endif %}>{{ emp }}</option>{% endfor %}
+    </select>
+  </div>
+  <button class="btn btn-primary">Guardar cambios</button>
+  <a class="btn btn-secondary" href="{% url 'ver_pedido_proveedor' %}">Cancelar</a>
+</form>
+{% endblock %}

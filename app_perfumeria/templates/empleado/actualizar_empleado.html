@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Actualizar Empleado</h3>
+<form method="POST" action="{% url 'actualizar_empleado' empleado.id %}">
+  {% csrf_token %}
+  
+  <div class="mb-3">
+    <label>Nombre</label>
+    <input class="form-control" name="nombre" value="{{ empleado.nombre }}" required>
+  </div>
+
+  <div class="mb-3">
+    <label>Apellido</label>
+    <input class="form-control" name="apellido" value="{{ empleado.apellido }}" required>
+  </div>
+
+  <div class="mb-3">
+    <label>Puesto</label>
+    <input class="form-control" name="puesto" value="{{ empleado.puesto }}">
+  </div>
+
+  <div class="mb-3">
+    <label>Teléfono</label>
+    <input class="form-control" name="telefono" value="{{ empleado.telefono }}">
+  </div>
+
+  <div class="mb-3">
+    <label>Email</label>
+    <input type="email" class="form-control" name="email" value="{{ empleado.email }}">
+  </div>
+
+  <!-- ✅ Fechas con formato correcto -->
+  <div class="mb-3">
+    <label>Fecha Nacimiento</label>
+    <input type="date" class="form-control" name="fecha_nacimiento"
+           value="{{ empleado.fecha_nacimiento|date:'Y-m-d' }}">
+  </div>
+
+  <div class="mb-3">
+    <label>Fecha Contratación</label>
+    <input type="date" class="form-control" name="fecha_contratacion"
+           value="{{ empleado.fecha_contratacion|date:'Y-m-d' }}">
+  </div>
+
+  <div class="form-check mb-3">
+    <input type="checkbox" class="form-check-input" id="activo" name="activo" {% if empleado.activo %}checked{% endif %}>
+    <label class="form-check-label" for="activo">Activo</label>
+  </div>
+
+  <button class="btn btn-primary">Guardar cambios</button>
+  <a class="btn btn-secondary" href="{% url 'ver_empleado' %}">Cancelar</a>
+</form>
+{% endblock %}

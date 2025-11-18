@@ -1,1 +1,11 @@
-# UIII-Act-6-Agregar-las-dem-s-tablas-de-tu-negocio
+<img width="1920" height="1026" alt="image" src="https://github.com/user-attachments/assets/1926a6f3-eb37-4bd5-8f96-7e450e58d380" />
+<img width="1801" height="901" alt="image" src="https://github.com/user-attachments/assets/db9af09f-e124-47ee-83f4-50c32e779bdf" />
+<img width="1854" height="962" alt="image" src="https://github.com/user-attachments/assets/b35b596c-13ae-4c54-8461-24c6407cf5a7" />
+<img width="1626" height="823" alt="image" src="https://github.com/user-attachments/assets/e90c2870-081d-491b-94c9-c86ea1557801" />
+<img width="1916" height="774" alt="image" src="https://github.com/user-attachments/assets/b370b100-e3e0-4202-bf37-88ee8388a357" />
+<img width="1613" height="624" alt="image" src="https://github.com/user-attachments/assets/1da748d0-77fe-41ab-b3e0-bc50c3721a1a" />
+<img width="1848" height="944" alt="image" src="https://github.com/user-attachments/assets/fe1a31f6-5889-4dcf-bc81-e287202ebc8c" />
+<img width="1670" height="812" alt="image" src="https://github.com/user-attachments/assets/949f7010-ec91-4833-ba02-01d6508c1e93" />
+<img width="1585" height="901" alt="image" src="https://github.com/user-attachments/assets/9a64c81c-a3b7-4c0e-acb3-8490440a3e41" />
+<img width="1817" height="831" alt="image" src="https://github.com/user-attachments/assets/ebf2cb8d-50eb-4643-bc2b-ea7d7f716aad" />
+<img width="1920" height="1061" alt="image" src="https://github.com/user-attachments/assets/c0411d39-0e64-43d9-8fa6-3e9776aefbd5" />

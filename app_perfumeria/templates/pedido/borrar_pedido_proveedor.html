@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Confirmar borrado</h3>
+<p>¿Deseas eliminar el pedido <strong>#{{ pedido.id }}</strong> al proveedor <strong>{{ pedido.proveedor.nombre }}</strong>?</p>
+<form method="post">{% csrf_token %}
+  <button class="btn btn-danger">Sí, eliminar</button>
+  <a class="btn btn-secondary" href="{% url 'ver_pedido_proveedor' %}">No, volver</a>
+</form>
+{% endblock %}

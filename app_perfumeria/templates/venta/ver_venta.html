@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Ventas{% endblock %}
+{% block content %}
+
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Lista de Ventas de Productos</h2>
+    <a href="{% url 'agregar_venta_producto' %}" class="btn btn-success">+ Registrar Venta</a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped align-middle">
+      <thead class="table-dark text-center">
+        <tr>
+          <th>ID</th>
+          <th>Producto</th>
+          <th>Descripción</th>
+          <th>Cantidad</th>
+          <th>Precio Unitario</th>
+          <th>Total</th>
+          <th>Cliente</th>
+          <th>Empleados</th>
+          <th>Fecha Venta</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        {% for venta in ventas %}
+        <tr>
+          <td>{{ venta.id }}</td>
+          <td>{{ venta.nombre_producto }}</td>
+          <td>{{ venta.descripcion|default:"-" }}</td>
+          <td>{{ venta.cantidad }}</td>
+          <td>${{ venta.precio_unitario }}</td>
+          <td>${{ venta.total }}</td>
+          <td>{{ venta.cliente.nombre }} {{ venta.cliente.apellido }}</td>
+          <td>
+            {% if venta.empleados.all %}
+              <ul class="list-unstyled mb-0">
+                {% for emp in venta.empleados.all %}
+                  <li>{{ emp.nombre }} {{ emp.apellido }}</li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              -
+            {% endif %}
+          </td>
+          <td>{{ venta.fecha_venta|date:"d/m/Y" }}</td>
+          <td>
+            <a href="{% url 'actualizar_venta_producto' venta.id %}" class="btn btn-sm btn-primary">Editar</a>
+            <a href="{% url 'borrar_venta_producto' venta.id %}" class="btn btn-sm btn-danger">Borrar</a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="10" class="text-center">No hay ventas registradas.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

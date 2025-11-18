@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Agregar Cliente{% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Agregar Cliente</h2>
+  <form method="POST">
+    {% csrf_token %}
+    
+    <div class="mb-3">
+      <label>Nombre</label>
+      <input type="text" name="nombre" class="form-control" required>
+    </div>
+    
+    <div class="mb-3">
+      <label>Apellido</label>
+      <input type="text" name="apellido" class="form-control" required>
+    </div>
+    
+    <div class="mb-3">
+      <label>Teléfono</label>
+      <input type="text" name="telefono" class="form-control">
+    </div>
+    
+    <div class="mb-3">
+      <label>Email</label>
+      <input type="email" name="email" class="form-control">
+    </div>
+    
+    <div class="mb-3">
+      <label>Dirección</label>
+      <input type="text" name="direccion" class="form-control">
+    </div>
+    
+    <div class="mb-3">
+      <label>Fecha de registro</label>
+      <input type="date" name="fecha_registro" class="form-control" required>
+    </div>
+    
+    <div class="mb-3">
+      <label>Empleado que atendió</label>
+      <select name="empleado" class="form-select">
+        <option value="">-- Ninguno --</option>
+        {% for e in empleados %}
+        <option value="{{ e.id }}">{{ e.nombre }} {{ e.apellido }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    
+    <div class="form-check mb-3">
+      <input type="checkbox" class="form-check-input" id="activo" name="activo" checked>
+      <label class="form-check-label" for="activo">Activo</label>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Guardar Cliente</button>
+    <a href="{% url 'ver_cliente' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

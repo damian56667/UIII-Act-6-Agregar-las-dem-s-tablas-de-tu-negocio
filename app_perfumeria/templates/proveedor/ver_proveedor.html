@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Proveedores{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Proveedores</h2>
+    <a href="{% url 'agregar_proveedor' %}" class="btn btn-success">+ Agregar Proveedor</a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Empresa</th>
+          <th>Teléfono</th>
+          <th>Email</th>
+          <th>Dirección</th>
+          <th>Página Web</th> <!-- NUEVO CAMPO -->
+          <th>Activo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for p in proveedores %}
+        <tr>
+          <td>{{ p.id }}</td>
+          <td>{{ p.nombre }}</td>
+          <td>{{ p.empresa|default:"-" }}</td>
+          <td>{{ p.telefono|default:"-" }}</td>
+          <td>{{ p.email|default:"-" }}</td>
+          <td>{{ p.direccion|default:"-" }}</td>
+          <td>
+            {% if p.pagina_web %}
+              <a href="{{ p.pagina_web }}" target="_blank">{{ p.pagina_web }}</a>
+            {% else %}
+              -
+            {% endif %}
+          </td>
+          <td>
+            {% if p.activo %}
+              <span class="badge bg-success">Sí</span>
+            {% else %}
+              <span class="badge bg-secondary">No</span>
+            {% endif %}
+          </td>
+          <td>
+            <a href="{% url 'actualizar_proveedor' p.id %}" class="btn btn-sm btn-primary">Editar</a>
+            <a href="{% url 'borrar_proveedor' p.id %}" class="btn btn-sm btn-danger">Borrar</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr><td colspan="9" class="text-center">No hay proveedores registrados.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
